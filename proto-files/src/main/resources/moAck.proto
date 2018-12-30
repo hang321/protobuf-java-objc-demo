@@ -1,0 +1,23 @@
+syntax = "proto3";
+package demo;
+
+import "google/protobuf/timestamp.proto";
+
+
+option java_package = "net.hang321.sample.protobuf.data.proto";
+option java_outer_classname = "MoAckProtos";
+option optimize_for = CODE_SIZE;
+
+
+message MoAck {
+
+  google.protobuf.Timestamp dateTime = 1;
+
+  // ack received messageId
+  int64 msgId = 2;
+
+  bool status = 3;
+
+  string error = 4;
+
+}

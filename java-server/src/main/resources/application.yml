@@ -1,0 +1,43 @@
+#====================
+# Spring boot configs
+#====================
+server:
+  port: 8080
+
+
+#====================
+#  main and datasource config
+#====================
+spring:
+  application:
+    name: protobuf and MQTT demo
+  main:
+    banner-mode: "off"
+  activemq:
+    broker-url: vm://localhost?broker.persistent=false
+    pool:
+      enabled: false
+
+#====================
+# Demo configs
+#====================
+# the instanceId used as example: a3e3b0af-af85-4633-a0f5-0b10212bdabd
+
+demo:
+  mqtt:
+    broker:
+      # change it to other hostname / IP
+      host: iot.eclipse.org
+      port: 1883
+    client:
+      # clientId: ${demo-clientId}-demo-service  # hostname to unique identify a client inside cluster mode
+      clientId: demo-clientId
+    topic:
+      # "$share" for shared subscription with load balancing
+      # "$local" for only dispatch message one node (in cluster as well)
+      messageOriginated:
+        request: "$local/$share/group/demo/mo/request/+"
+        response: "demo/mo/response"
+      messageTerminated:
+        request: "demo/mt/request"
+        response: "$local/$share/group/demo/mt/response/+"

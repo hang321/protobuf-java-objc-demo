@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/integration/jms http://www.springframework.org/schema/integration/jms/spring-integration-jms.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+  <bean id="mtJmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+    <property name="connectionFactory" ref="connectionFactory"/>
+    <property name="destination" ref="mtQueue"/>
+    <property name="sessionTransacted" value="true"/>
+    <property name="errorHandler" ref="logErrorHandler"/>
+  </bean>
+
+  <!-- http://docs.spring.io/spring-integration/reference/html/jms.html#jms-message-driven-channel-adapter -->
+  <!-- default transacted in 4.2. Don't add error-channel here, otherwise it will not rollback in jms hence message lost -->
+  <int-jms:message-driven-channel-adapter id="sendMtMessageAdapter" channel="sendMtMsgChannel" container="mtJmsContainer"/>
+
+</beans>

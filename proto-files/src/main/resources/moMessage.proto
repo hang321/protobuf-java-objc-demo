@@ -1,0 +1,26 @@
+syntax = "proto3";
+package demo;
+
+import "google/protobuf/timestamp.proto";
+
+
+option java_package = "net.hang321.sample.protobuf.data.proto";
+option java_outer_classname = "MoMsgProtos";
+option optimize_for = CODE_SIZE;
+
+
+message MoMessage {
+
+  int64 msgId = 1;
+
+  google.protobuf.Timestamp dateTime = 2;
+
+  // most / least significant bits
+  fixed64 instanceIdMsb = 3;
+  fixed64 instanceIdLsb = 4;
+
+  string recipient = 5; // add "repeated" keyword for multiple recipients
+
+  string text = 6;    // content
+
+}

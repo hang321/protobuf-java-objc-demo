@@ -1,0 +1,23 @@
+syntax = "proto3";
+package demo;
+
+import "google/protobuf/timestamp.proto";
+
+
+option java_package = "net.hang321.sample.protobuf.data.proto";
+option java_outer_classname = "MtAckProtos";
+option optimize_for = CODE_SIZE;
+
+
+message MtAck {
+
+  google.protobuf.Timestamp dateTime = 1;
+
+  // most / least significant bits
+  fixed64 instanceIdMsb = 2;
+  fixed64 instanceIdLsb = 3;
+
+  // ack received messageId
+  int64 msgId = 4;
+
+}

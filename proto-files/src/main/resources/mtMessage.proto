@@ -1,0 +1,22 @@
+syntax = "proto3";
+package demo;
+
+import "google/protobuf/timestamp.proto";
+
+
+option java_package = "net.hang321.sample.protobuf.data.proto";
+option java_outer_classname = "MtMsgProtos";
+option optimize_for = CODE_SIZE;
+
+
+message MtMessage {
+
+    int64 msgId = 1;
+
+    google.protobuf.Timestamp dateTime = 2;
+
+    string sender = 3;
+
+    string text = 4;    // content
+
+}
