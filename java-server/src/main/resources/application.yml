@@ -28,6 +28,7 @@ demo:
     broker:
       # change it to other hostname / IP
       host: iot.eclipse.org
+      #host: 192.168.230.132
       port: 1883
     client:
       # clientId: ${demo-clientId}-demo-service  # hostname to unique identify a client inside cluster mode

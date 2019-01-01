@@ -17,7 +17,7 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
 /**
- * @Author: Steve Chan
+ * @author Steve Chan
  **/
 @Component
 public class MqttOutbound {
